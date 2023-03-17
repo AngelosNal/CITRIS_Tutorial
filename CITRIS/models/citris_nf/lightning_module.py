@@ -69,7 +69,7 @@ class CITRISNF(CITRISVAE):
                                            act_fn=get_act_fn(self.hparams.flow_act_fn),
                                            hidden_per_var=self.hparams.hidden_per_var)
         # Setup autoencoder
-        self.autoencoder = Autoencoder.load_from_checkpoint('ae.ckpt')
+        self.autoencoder = Autoencoder.load_from_checkpoint('checkpoints/ae.ckpt')
         for p in self.autoencoder.parameters():
             p.requires_grad_(False)
         assert self.hparams.num_latents == self.autoencoder.hparams.num_latents, 'Autoencoder and flow need to have the same number of latents'
